@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <stdio.h>
 #include <sys/un.h>
+#include <arpa/inet.h>
 #include <string.h>
 #include <unistd.h>
 int main(int argc, char *argv[])
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
 
     int sockfd;
     int len;
-    struct sockaddr_un address;
+    struct sockaddr_in address;
     int result;
 
     char ch = *argv[1];
@@ -27,8 +28,8 @@ int main(int argc, char *argv[])
     /* Create a socket for the client. */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* Name the socket, as agreed with the server. */
-    address.sun_family = AF_INET;
-    strcpy(address.sun_path, "server_socket");
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = inet_addr("127.0.0.1");
     len = sizeof(address);
     /* Now connect our socket to the server's socket. */
     result = connect(sockfd, (struct sockaddr *)&address, len);
