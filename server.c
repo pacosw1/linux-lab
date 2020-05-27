@@ -31,6 +31,11 @@ int main()
         client_len = sizeof(client_address);
         client_sockfd = accept(server_sockfd,
                                (struct sockaddr *)&client_address, &client_len);
+
+        if (client_sockfd)
+        {
+            printf("Client connected");
+        }
         /* We can now read/write to client on client_sockfd. */
         read(client_sockfd, &ch, 1);
         ch++;
