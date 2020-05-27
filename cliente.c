@@ -32,3 +32,4 @@ int main()
     printf("char from server = %c\n", ch);
     close(sockfd);
     return;
+}
