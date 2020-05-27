@@ -41,8 +41,8 @@ int main()
 
         if (client_sockfd > 0)
         {
-            printf("Client connected");
-            printf("%s", (inet_ntoa(client_address.sin_addr)));
+            printf("Client connected\n");
+            printf("%s\n", (inet_ntoa(client_address.sin_addr)));
         }
         /* We can now read/write to client on client_sockfd. */
         read(client_sockfd, &ch, 1);
