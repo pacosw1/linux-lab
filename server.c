@@ -18,8 +18,8 @@ int main()
     struct sockaddr_in client_address;
     /* Remove any old socket and create an unnamed socket for the server. */
     unlink("server_socket");
-    int ClientPort = 4000;
 
+    int ClientPort = 4000;
     server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* Name the socket. */
     server_address.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -45,7 +45,9 @@ int main()
         }
         /* We can now read/write to client on client_sockfd. */
         read(client_sockfd, &ch, 1);
-        ch++;
+        printf(inet_ntoa(client_address.sin_addr));
+        printf(ch);
+        printf(__DATE__);
         write(client_sockfd, &ch, 1);
         close(client_sockfd);
     }
