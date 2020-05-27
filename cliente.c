@@ -2,9 +2,11 @@
 * client1.c - a simple local client program.
 */
 #include <sys/types.h>
+#include <stdlib.h>
 #include <sys/socket.h>
 #include <stdio.h>
 #include <sys/un.h>
+#include <string.h>
 #include <unistd.h>
 int main(int argc, char *argv[])
 {
@@ -20,7 +22,7 @@ int main(int argc, char *argv[])
     struct sockaddr_un address;
     int result;
 
-    char ch = argv[1];
+    char ch = *argv[1];
 
     /* Create a socket for the client. */
     sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
