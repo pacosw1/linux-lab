@@ -6,13 +6,22 @@
 #include <stdio.h>
 #include <sys/un.h>
 #include <unistd.h>
-int main()
+int main(int argc, char *argv[])
 {
+
+    if (argc < 2)
+    {
+        printf("Missing input");
+        return 0;
+    }
+
     int sockfd;
     int len;
     struct sockaddr_un address;
     int result;
-    char ch = 'A';
+
+    char ch = argv[1];
+
     /* Create a socket for the client. */
     sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
     /* Name the socket, as agreed with the server. */
@@ -31,5 +40,5 @@ int main()
     read(sockfd, &ch, 1);
     printf("char from server = %c\n", ch);
     close(sockfd);
-    return;
+    return 0;
 }
