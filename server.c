@@ -45,7 +45,7 @@ int main()
         }
         /* We can now read/write to client on client_sockfd. */
         read(client_sockfd, &ch, 1);
-        printf(inet_ntoa(client_address.sin_addr));
+        printf("%s", (inet_ntoa(client_address.sin_addr));
 
         write(client_sockfd, &ch, 1);
         close(client_sockfd);
