@@ -27,9 +27,12 @@ int main(int argc, char *argv[])
 
     /* Create a socket for the client. */
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    int ServerPort = 4000;
+
     /* Name the socket, as agreed with the server. */
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = inet_addr("127.0.0.1");
+    address.sin_port = htons(ServerPort);
     len = sizeof(address);
     /* Now connect our socket to the server's socket. */
     result = connect(sockfd, (struct sockaddr *)&address, len);
