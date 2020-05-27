@@ -34,6 +34,7 @@ int main()
     {
         char ch;
         printf("server waiting\n");
+        printf("%s", (inet_ntoa(client_address.sin_addr)));
         /* Accept a connection. */
         client_len = sizeof(client_address);
         client_sockfd = accept(server_sockfd,
@@ -45,7 +46,6 @@ int main()
         }
         /* We can now read/write to client on client_sockfd. */
         read(client_sockfd, &ch, 1);
-        printf("%s", (inet_ntoa(client_address.sin_addr)));
 
         write(client_sockfd, &ch, 1);
         close(client_sockfd);
