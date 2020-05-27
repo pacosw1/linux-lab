@@ -15,9 +15,9 @@ int main()
     struct sockaddr_un client_address;
     /* Remove any old socket and create an unnamed socket for the server. */
     unlink("server_socket");
-    server_sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+    server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* Name the socket. */
-    server_address.sun_family = AF_UNIX;
+    server_address.sun_family = AF_INET;
     strcpy(server_address.sun_path, "server_socket");
     server_len = sizeof(server_address);
     bind(server_sockfd, (struct sockaddr *)&server_address, server_len);

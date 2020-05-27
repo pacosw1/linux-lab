@@ -25,16 +25,16 @@ int main(int argc, char *argv[])
     char ch = *argv[1];
 
     /* Create a socket for the client. */
-    sockfd = socket(AF_UNIX, SOCK_STREAM, 0);
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
     /* Name the socket, as agreed with the server. */
-    address.sun_family = AF_UNIX;
+    address.sun_family = AF_INET;
     strcpy(address.sun_path, "server_socket");
     len = sizeof(address);
     /* Now connect our socket to the server's socket. */
     result = connect(sockfd, (struct sockaddr *)&address, len);
     if (result == -1)
     {
-        perror("oops: client1");
+        perror("Conection error");
         exit(1);
     }
     /* We can now read/write via sockfd. */
